@@ -44,7 +44,7 @@
             grid-template-columns: 1fr;
         }
 
-        /* BARRA LATERAL (HEADER) - VISÃO MOBILE */
+        /* BARRA LATERAL (HEADER) */
         .fixed-sidebar {
             padding: 40px;
             text-align: center;
@@ -77,7 +77,6 @@
             color: var(--cor-texto-secundario);
             line-height: 1.5;
         }
-
         .blog-subtitle a {
             color: var(--cor-destaque);
             text-decoration: none;
@@ -86,6 +85,31 @@
         }
         .blog-subtitle a:hover {
             color: var(--cor-destaque-hover);
+        }
+        
+        .sidebar-extra-links {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            gap: 10px; /* Espaço entre os links */
+            flex-wrap: wrap;
+        }
+        .sidebar-badge-link {
+            display: inline-block;
+            font-family: var(--fonte-titulos);
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--cor-texto-secundario);
+            border: 1px solid #444;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        .sidebar-badge-link:hover {
+            color: var(--cor-destaque);
+            border-color: var(--cor-destaque);
+            background-color: rgba(212, 175, 55, 0.1);
         }
 
         /* FEED DE CONTEÚDO (ARTIGOS) */
@@ -100,12 +124,10 @@
             margin-bottom: 40px;
             transition: transform 0.3s ease, background-color 0.3s ease;
         }
-
         .article-card:hover {
             transform: translateY(-5px);
             background-color: #252525;
         }
-
         .article-card a {
             text-decoration: none;
             color: inherit;
@@ -119,7 +141,6 @@
             margin-bottom: 15px;
             font-weight: 400;
         }
-
         .category-tag {
             background-color: rgba(212, 175, 55, 0.1);
             color: var(--cor-destaque);
@@ -151,29 +172,45 @@
             display: inline-block;
             transition: color 0.3s ease, transform 0.3s ease;
         }
-
         .read-more::after {
             content: ' →';
             display: inline-block;
             transition: transform 0.3s ease;
         }
-
         .article-card:hover .read-more {
             color: var(--cor-destaque-hover);
         }
-
         .article-card:hover .read-more::after {
             transform: translateX(5px);
         }
+        
+        /* RODAPÉ */
+        .site-footer {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid #2a2a2a;
+        }
+        .license-text {
+            font-family: var(--fonte-titulos);
+            font-size: 0.85rem;
+            color: var(--cor-texto-secundario);
+            line-height: 1.6;
+        }
+        .license-text a {
+            color: var(--cor-texto-secundario);
+            text-decoration: underline;
+            transition: color 0.3s ease;
+        }
+        .license-text a:hover {
+            color: var(--cor-destaque);
+        }
 
-        /* =================================================================
-         * MEDIA QUERY (TELAS MAIORES)
-         * ================================================================= */
+        /* MEDIA QUERY (TELAS MAIORES) */
         @media (min-width: 992px) {
             .layout-grid {
                 grid-template-columns: 340px 1fr;
             }
-
             .fixed-sidebar {
                 position: sticky;
                 top: 0;
@@ -182,16 +219,12 @@
                 flex-direction: column;
                 justify-content: center;
                 padding: 50px;
-                /* <<< AQUI ESTÁ A MUDANÇA PRINCIPAL */
-                align-items: center; /* Centraliza os itens no eixo horizontal */
-                text-align: left; /* Mantém o texto dentro dos itens alinhado à esquerda */
+                align-items: center;
+                text-align: left;
             }
-            
-            /* Garante que o texto fique à esquerda enquanto a imagem fica no centro */
-            .blog-title, .blog-subtitle {
-                width: 100%; /* Força o bloco de texto a ocupar toda a largura para o text-align funcionar */
+            .blog-title, .blog-subtitle, .sidebar-extra-links {
+                width: 100%;
             }
-
             .content-feed {
                 padding: 80px 60px;
             }
@@ -209,6 +242,18 @@
             <p class="blog-subtitle">
                 Um blog de <a href="#">Sérgio Araújo</a>. Professor, escritor, poeta. Explorando ideias, conhecimento e experiências a partir de Salinas da Margarida.
             </p>
+            
+            <div class="sidebar-extra-links">
+                <a href="https://orcid.org/0000-0001-8531-1155" target="_blank" rel="noopener noreferrer" class="sidebar-badge-link">
+                    ORCID
+                </a>
+                <a href="https://www.linkedin.com/in/sergioaraujo709/" target="_blank" rel="noopener noreferrer" class="sidebar-badge-link">
+                    LinkedIn
+                </a>
+                <a href="https://mecred.mec.gov.br/perfil/2016" target="_blank" rel="noopener noreferrer" class="sidebar-badge-link">
+                    me-Cred
+                </a>
+            </div>
         </header>
 
         <main class="content-feed">
@@ -234,7 +279,6 @@
                     <span class="read-more">Ler artigo completo</span>
                 </a>
             </article>
-            
             <article class="article-card">
                 <a href="https://sergioaraujo.onlyoffice.com/s/GyczmCv3q26frnc" target="_blank">
                     <div class="article-meta"><span class="category-tag">Educação</span></div>
@@ -299,7 +343,13 @@
                     <span class="read-more">Ler artigo completo</span>
                 </a>
             </article>
-
+            
+            <footer class="site-footer">
+                <p class="license-text">
+                    © 2025 Sérgio Araújo.<br>
+                    Esta obra está licenciada sob a licença <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="license noopener noreferrer">Creative Commons Atribuição-NãoComercial 4.0 Internacional</a>.
+                </p>
+            </footer>
         </main>
     </div>
 
