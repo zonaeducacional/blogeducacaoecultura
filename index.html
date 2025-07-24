@@ -1,357 +1,398 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sérgio Araújo - Educação e Cultura</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sérgio Araújo - Educação e Cultura</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root {
+--cor-fundo: #121212;
+--cor-fundo-secundario: #1E1E1E;
+--cor-texto-principal: #E0E0E0;
+--cor-texto-secundario: #A0A0A0;
+--cor-destaque: #D4AF37;
+--cor-destaque-hover: #F0C962;
+--fonte-titulos: 'Montserrat', sans-serif;
+--fonte-corpo: 'Source Serif Pro', serif;
+}
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+* {
+margin: 0;
+padding: 0;
+box-sizing: border-box;
+}
 
-    <style>
-        :root {
-            --cor-fundo: #121212;
-            --cor-fundo-secundario: #1E1E1E;
-            --cor-texto-principal: #E0E0E0;
-            --cor-texto-secundario: #A0A0A0;
-            --cor-destaque: #D4AF37;
-            --cor-destaque-hover: #F0C962;
-            --fonte-titulos: 'Montserrat', sans-serif;
-            --fonte-corpo: 'Source Serif Pro', serif;
-        }
+html {
+scroll-behavior: smooth;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+body {
+background-color: var(--cor-fundo);
+color: var(--cor-texto-principal);
+font-family: var(--fonte-corpo);
+line-height: 1.8;
+-webkit-font-smoothing: antialiased;
+}
 
-        html {
-            scroll-behavior: smooth;
-        }
+.layout-grid {
+display: grid;
+grid-template-columns: 1fr;
+}
 
-        body {
-            background-color: var(--cor-fundo);
-            color: var(--cor-texto-principal);
-            font-family: var(--fonte-corpo);
-            line-height: 1.8;
-            -webkit-font-smoothing: antialiased;
-        }
+/* BARRA LATERAL (HEADER) */
+.fixed-sidebar {
+padding: 40px;
+text-align: center;
+}
 
-        .layout-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-        }
+.profile-image {
+width: 100px;
+height: 100px;
+border-radius: 50%;
+object-fit: cover;
+border: 3px solid var(--cor-fundo-secundario);
+box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+display: block;
+margin: 0 auto 25px;
+}
 
-        /* BARRA LATERAL (HEADER) */
-        .fixed-sidebar {
-            padding: 40px;
-            text-align: center;
-        }
+.blog-title {
+font-family: var(--fonte-titulos);
+font-size: 2.2rem;
+font-weight: 800;
+line-height: 1.1;
+color: #ffffff;
+letter-spacing: -0.5px;
+margin-bottom: 15px;
+}
 
-        .profile-image {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--cor-fundo-secundario);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-            display: block;
-            margin: 0 auto 25px;
-        }
+/* Efeito Text Type */
+.typewriter {
+display: inline-block;
+overflow: hidden;
+border-right: 3px solid var(--cor-destaque);
+white-space: nowrap;
+animation: typing 3.5s steps(40, end), blink-caret 0.75s step-end infinite;
+}
 
-        .blog-title {
-            font-family: var(--fonte-titulos);
-            font-size: 2.2rem;
-            font-weight: 800;
-            line-height: 1.1;
-            color: #ffffff;
-            letter-spacing: -0.5px;
-            margin-bottom: 15px;
-        }
+@keyframes typing {
+from { width: 0; }
+to { width: 100%; }
+}
 
-        .blog-subtitle {
-            font-family: var(--fonte-titulos);
-            font-size: 0.95rem;
-            color: var(--cor-texto-secundario);
-            line-height: 1.5;
-        }
-        .blog-subtitle a {
-            color: var(--cor-destaque);
-            text-decoration: none;
-            font-weight: bold;
-            transition: color 0.3s ease;
-        }
-        .blog-subtitle a:hover {
-            color: var(--cor-destaque-hover);
-        }
-        
-        .sidebar-extra-links {
-            margin-top: 30px;
-            display: flex;
-            justify-content: center;
-            gap: 10px; /* Espaço entre os links */
-            flex-wrap: wrap;
-        }
-        .sidebar-badge-link {
-            display: inline-block;
-            font-family: var(--fonte-titulos);
-            font-size: 0.8rem;
-            font-weight: 600;
-            color: var(--cor-texto-secundario);
-            border: 1px solid #444;
-            padding: 8px 15px;
-            border-radius: 20px;
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-        .sidebar-badge-link:hover {
-            color: var(--cor-destaque);
-            border-color: var(--cor-destaque);
-            background-color: rgba(212, 175, 55, 0.1);
-        }
+@keyframes blink-caret {
+from, to { border-color: transparent; }
+50% { border-color: var(--cor-destaque); }
+}
 
-        /* FEED DE CONTEÚDO (ARTIGOS) */
-        .content-feed {
-            padding: 40px 20px;
-        }
+.blog-subtitle {
+font-family: var(--fonte-titulos);
+font-size: 0.95rem;
+color: var(--cor-texto-secundario);
+line-height: 1.5;
+}
 
-        .article-card {
-            background-color: var(--cor-fundo-secundario);
-            border-radius: 16px;
-            padding: 25px;
-            margin-bottom: 40px;
-            transition: transform 0.3s ease, background-color 0.3s ease;
-        }
-        .article-card:hover {
-            transform: translateY(-5px);
-            background-color: #252525;
-        }
-        .article-card a {
-            text-decoration: none;
-            color: inherit;
-            display: block;
-        }
+.blog-subtitle a {
+color: var(--cor-destaque);
+text-decoration: none;
+font-weight: bold;
+transition: color 0.3s ease;
+}
 
-        .article-meta {
-            font-family: var(--fonte-titulos);
-            font-size: 0.8rem;
-            color: var(--cor-texto-secundario);
-            margin-bottom: 15px;
-            font-weight: 400;
-        }
-        .category-tag {
-            background-color: rgba(212, 175, 55, 0.1);
-            color: var(--cor-destaque);
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-weight: 700;
-        }
+.blog-subtitle a:hover {
+color: var(--cor-destaque-hover);
+}
 
-        .article-title {
-            font-family: var(--fonte-titulos);
-            font-size: clamp(1.4rem, 4vw, 1.8rem);
-            font-weight: 700;
-            line-height: 1.3;
-            color: #ffffff;
-            margin-bottom: 15px;
-        }
+.sidebar-extra-links {
+margin-top: 30px;
+display: flex;
+justify-content: center;
+gap: 10px;
+flex-wrap: wrap;
+}
 
-        .article-excerpt {
-            color: var(--cor-texto-secundario);
-            font-size: 1.05rem;
-            margin-bottom: 25px;
-        }
+.sidebar-badge-link {
+display: inline-block;
+font-family: var(--fonte-titulos);
+font-size: 0.8rem;
+font-weight: 600;
+color: var(--cor-texto-secundario);
+border: 1px solid #444;
+padding: 8px 15px;
+border-radius: 20px;
+text-decoration: none;
+transition: all 0.3s ease;
+}
 
-        .read-more {
-            font-family: var(--fonte-titulos);
-            color: var(--cor-destaque);
-            font-weight: 700;
-            font-size: 0.9rem;
-            display: inline-block;
-            transition: color 0.3s ease, transform 0.3s ease;
-        }
-        .read-more::after {
-            content: ' →';
-            display: inline-block;
-            transition: transform 0.3s ease;
-        }
-        .article-card:hover .read-more {
-            color: var(--cor-destaque-hover);
-        }
-        .article-card:hover .read-more::after {
-            transform: translateX(5px);
-        }
-        
-        /* RODAPÉ */
-        .site-footer {
-            text-align: center;
-            margin-top: 60px;
-            padding-top: 30px;
-            border-top: 1px solid #2a2a2a;
-        }
-        .license-text {
-            font-family: var(--fonte-titulos);
-            font-size: 0.85rem;
-            color: var(--cor-texto-secundario);
-            line-height: 1.6;
-        }
-        .license-text a {
-            color: var(--cor-texto-secundario);
-            text-decoration: underline;
-            transition: color 0.3s ease;
-        }
-        .license-text a:hover {
-            color: var(--cor-destaque);
-        }
+.sidebar-badge-link:hover {
+color: var(--cor-destaque);
+border-color: var(--cor-destaque);
+background-color: rgba(212, 175, 55, 0.1);
+}
 
-        /* MEDIA QUERY (TELAS MAIORES) */
-        @media (min-width: 992px) {
-            .layout-grid {
-                grid-template-columns: 340px 1fr;
-            }
-            .fixed-sidebar {
-                position: sticky;
-                top: 0;
-                height: 100vh;
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                padding: 50px;
-                align-items: center;
-                text-align: left;
-            }
-            .blog-title, .blog-subtitle, .sidebar-extra-links {
-                width: 100%;
-            }
-            .content-feed {
-                padding: 80px 60px;
-            }
-        }
-    </style>
+/* FEED DE CONTEÚDO (ARTIGOS) */
+.content-feed {
+padding: 40px 20px;
+}
+
+.article-card {
+background-color: var(--cor-fundo-secundario);
+border-radius: 16px;
+padding: 25px;
+margin-bottom: 40px;
+transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.article-card:hover {
+transform: translateY(-5px);
+background-color: #252525;
+}
+
+.article-card a {
+text-decoration: none;
+color: inherit;
+display: block;
+}
+
+.article-meta {
+font-family: var(--fonte-titulos);
+font-size: 0.8rem;
+color: var(--cor-texto-secundario);
+margin-bottom: 15px;
+font-weight: 400;
+}
+
+.category-tag {
+background-color: rgba(212, 175, 55, 0.1);
+color: var(--cor-destaque);
+padding: 6px 12px;
+border-radius: 20px;
+font-weight: 700;
+}
+
+.article-title {
+font-family: var(--fonte-titulos);
+font-size: clamp(1.4rem, 4vw, 1.8rem);
+font-weight: 700;
+line-height: 1.3;
+color: #ffffff;
+margin-bottom: 15px;
+}
+
+.article-excerpt {
+color: var(--cor-texto-secundario);
+font-size: 1.05rem;
+margin-bottom: 25px;
+}
+
+.read-more {
+font-family: var(--fonte-titulos);
+color: var(--cor-destaque);
+font-weight: 700;
+font-size: 0.9rem;
+display: inline-block;
+transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.read-more::after {
+content: ' →';
+display: inline-block;
+transition: transform 0.3s ease;
+}
+
+.article-card:hover .read-more {
+color: var(--cor-destaque-hover);
+}
+
+.article-card:hover .read-more::after {
+transform: translateX(5px);
+}
+
+/* RODAPÉ */
+.site-footer {
+text-align: center;
+margin-top: 60px;
+padding-top: 30px;
+border-top: 1px solid #2a2a2a;
+}
+
+.license-text {
+font-family: var(--fonte-titulos);
+font-size: 0.85rem;
+color: var(--cor-texto-secundario);
+line-height: 1.6;
+}
+
+.license-text a {
+color: var(--cor-texto-secundario);
+text-decoration: underline;
+transition: color 0.3s ease;
+}
+
+.license-text a:hover {
+color: var(--cor-destaque);
+}
+
+/* MEDIA QUERY (TELAS MAIORES) */
+@media (min-width: 992px) {
+.layout-grid {
+grid-template-columns: 340px 1fr;
+}
+
+.fixed-sidebar {
+position: sticky;
+top: 0;
+height: 100vh;
+display: flex;
+flex-direction: column;
+justify-content: center;
+padding: 50px;
+align-items: center;
+text-align: left;
+}
+
+.blog-title, .blog-subtitle, .sidebar-extra-links {
+width: 100%;
+}
+
+.content-feed {
+padding: 80px 60px;
+}
+}
+</style>
 </head>
 <body>
+<div class="layout-grid">
+<header class="fixed-sidebar">
+<img src="https://web2.nekoweb.org/O%20Substack%20de%20S%C3%83%C2%A9rgio.jpg" alt="Foto de Sérgio Araújo" class="profile-image">
+<h1 class="blog-title">
+<span class="typewriter">Educação & Cultura</span>
+</h1>
+<p class="blog-subtitle">Um blog de <a href="#">Sérgio Araújo</a>. Professor, escritor, poeta. Explorando ideias, conhecimento e experiências a partir de Salinas da Margarida.</p>
+<div class="sidebar-extra-links">
+<a href="https://orcid.org/0000-0001-8531-1155" target="_blank" rel="noopener noreferrer" class="sidebar-badge-link">ORCID</a>
+<a href="https://www.linkedin.com/in/sergioaraujo709/" target="_blank" rel="noopener noreferrer" class="sidebar-badge-link">LinkedIn</a>
+<a href="https://mecred.mec.gov.br/perfil/2016" target="_blank" rel="noopener noreferrer" class="sidebar-badge-link">Mec-Red</a>
+</div>
+</header>
+<main class="content-feed"><art
+icle class="article-card">
+<a href="https://sergioaraujo.onlyoffice.com/s/vzQQBBhVhz98wFy" target="_blank">
+<div class="article-meta">
+<span class="category-tag">Educação</span>
+</div>
+<h2 class="article-title">A crise paradigmática na educação sob a ótica de Thomas Kuhn</h2>
+<p class="article-excerpt">Vou tratar este texto não como um artigo formal, mas como um chamado à discussão sobre um assunto tão importante que não pode ser relegado.</p>
+<span class="read-more">Ler artigo completo</span>
+</a>
+</article>
 
-    <div class="layout-grid">
-        <header class="fixed-sidebar">
-            <img src="https://web2.nekoweb.org/O%20Substack%20de%20S%C3%83%C2%A9rgio.jpg" alt="Foto de Sérgio Araújo" class="profile-image">
-            
-            <h1 class="blog-title">Educação & Cultura</h1>
+<article class="article-card">
+<a href="https://sergioaraujo.onlyoffice.com/s/-jrCrDnDcT5k5Pp" target="_blank">
+<div class="article-meta">
+<span class="category-tag">Educação</span>
+</div>
+<h2 class="article-title">A Gestão Democrática na Educação: uma Alternativa ao Autoritarismo</h2>
+<p class="article-excerpt">Análise da gestão democrática na educação pública de Salinas da Margarida, com foco no processo de escolha dos diretores escolares.</p>
+<span class="read-more">Ler artigo completo</span>
+</a>
+</article>
 
-            <p class="blog-subtitle">
-                Um blog de <a href="#">Sérgio Araújo</a>. Professor, escritor, poeta. Explorando ideias, conhecimento e experiências a partir de Salinas da Margarida.
-            </p>
-            
-            <div class="sidebar-extra-links">
-                <a href="https://orcid.org/0000-0001-8531-1155" target="_blank" rel="noopener noreferrer" class="sidebar-badge-link">
-                    ORCID
-                </a>
-                <a href="https://www.linkedin.com/in/sergioaraujo709/" target="_blank" rel="noopener noreferrer" class="sidebar-badge-link">
-                    LinkedIn
-                </a>
-                <a href="https://mecred.mec.gov.br/perfil/2016" target="_blank" rel="noopener noreferrer" class="sidebar-badge-link">
-                    Mec-Red
-                </a>
-            </div>
-        </header>
+<article class="article-card">
+<a href="https://sergioaraujo.onlyoffice.com/s/GyczmCv3q26frnc" target="_blank">
+<div class="article-meta">
+<span class="category-tag">Educação</span>
+</div>
+<h2 class="article-title">Ao mestre com carinho</h2>
+<p class="article-excerpt">A educação é, por natureza, um ato político e social que transcende a mera transmissão de conteúdo.</p>
+<span class="read-more">Ler artigo completo</span>
+</a>
+</article>
 
-        <main class="content-feed">
+<article class="article-card">
+<a href="https://sergioaraujo.onlyoffice.com/s/JvDWkwNhp3pmDLH" target="_blank">
+<div class="article-meta">
+<span class="category-tag">Sociedade</span>
+</div>
+<h2 class="article-title">Vá e veja!</h2>
+<p class="article-excerpt">Uma metáfora para abordar os horrores de um casamento espúrio entre o suposto dinheiro que tudo compra e as consciências que se vendem.</p>
+<span class="read-more">Ler artigo completo</span>
+</a>
+</article>
 
-            <article class="article-card">
-                <a href="https://sergioaraujo.onlyoffice.com/s/vzQQBBhVhz98wFy" target="_blank">
-                    <div class="article-meta">
-                        <span class="category-tag">Educação</span>
-                    </div>
-                    <h2 class="article-title">A crise paradigmática na educação sob a ótica de Thomas Kuhn</h2>
-                    <p class="article-excerpt">Vou tratar este texto não como um artigo formal, mas como um chamado à discussão sobre um assunto tão importante que não pode ser relegado.</p>
-                    <span class="read-more">Ler artigo completo</span>
-                </a>
-            </article>
+<article class="article-card">
+<a href="https://sergioaraujo.onlyoffice.com/s/8ZsS9Mzrn8SZMV5" target="_blank">
+<div class="article-meta">
+<span class="category-tag">Educação</span>
+</div>
+<h2 class="article-title">Ensino e aprendizagem</h2>
+<p class="article-excerpt">Nos educamos constantemente nas relações com a natureza, interações familiares e sociais que influem em nosso crescimento interior.</p>
+<span class="read-more">Ler artigo completo</span>
+</a>
+</article>
 
-            <article class="article-card">
-                <a href="https://sergioaraujo.onlyoffice.com/s/-jrCrDnDcT5k5Pp" target="_blank">
-                    <div class="article-meta">
-                        <span class="category-tag">Educação</span>
-                    </div>
-                    <h2 class="article-title">A Gestão Democrática na Educação: uma Alternativa ao Autoritarismo</h2>
-                    <p class="article-excerpt">Análise da gestão democrática na educação pública de Salinas da Margarida, com foco no processo de escolha dos diretores escolares.</p>
-                    <span class="read-more">Ler artigo completo</span>
-                </a>
-            </article>
-            <article class="article-card">
-                <a href="https://sergioaraujo.onlyoffice.com/s/GyczmCv3q26frnc" target="_blank">
-                    <div class="article-meta"><span class="category-tag">Educação</span></div>
-                    <h2 class="article-title">Ao mestre com carinho</h2>
-                    <p class="article-excerpt">A educação é, por natureza, um ato político e social que transcende a mera transmissão de conteúdo.</p>
-                    <span class="read-more">Ler artigo completo</span>
-                </a>
-            </article>
-            <article class="article-card">
-                <a href="https://sergioaraujo.onlyoffice.com/s/JvDWkwNhp3pmDLH" target="_blank">
-                    <div class="article-meta"><span class="category-tag">Sociedade</span></div>
-                    <h2 class="article-title">Vá e veja!</h2>
-                    <p class="article-excerpt">Uma metáfora para abordar os horrores de um casamento espúrio entre o suposto dinheiro que tudo compra e as consciências que se vendem.</p>
-                    <span class="read-more">Ler artigo completo</span>
-                </a>
-            </article>
-            <article class="article-card">
-                <a href="https://sergioaraujo.onlyoffice.com/s/8ZsS9Mzrn8SZMV5" target="_blank">
-                    <div class="article-meta"><span class="category-tag">Educação</span></div>
-                    <h2 class="article-title">Ensino e aprendizagem</h2>
-                    <p class="article-excerpt">Nos educamos constantemente nas relações com a natureza, interações familiares e sociais que influem em nosso crescimento interior.</p>
-                    <span class="read-more">Ler artigo completo</span>
-                </a>
-            </article>
-            <article class="article-card">
-                <a href="https://sergioaraujo.onlyoffice.com/s/TGBGpp8DKD69KMt" target="_blank">
-                    <div class="article-meta"><span class="category-tag">Pedagogia</span></div>
-                    <h2 class="article-title">Comunidade de aprendizagem</h2>
-                    <p class="article-excerpt">As primeiras manifestações daquilo que hoje chamamos de ensino e aprendizagem vieram das rodas em torno das fogueiras na pré-história.</p>
-                    <span class="read-more">Ler artigo completo</span>
-                </a>
-            </article>
-            <article class="article-card">
-                <a href="https://sergioaraujo.onlyoffice.com/s/H_-jzVfXmHHTW54" target="_blank">
-                    <div class="article-meta"><span class="category-tag">Filosofia</span></div>
-                    <h2 class="article-title">Rascunhos sobre vivência, consciência e pensamento crítico</h2>
-                    <p class="article-excerpt">A ausência do pensamento crítico, de um modo geral, e na prática educativa, caracteriza-se pela falta de um dar-se conta.</p>
-                    <span class="read-more">Ler artigo completo</span>
-                </a>
-            </article>
-            <article class="article-card">
-                <a href="https://sergioaraujo.onlyoffice.com/s/4KvzPy4_W9wvNd_" target="_blank">
-                    <div class="article-meta"><span class="category-tag">Pedagogia</span></div>
-                    <h2 class="article-title">Quais os fundamentos da sua práxis em educação?</h2>
-                    <p class="article-excerpt">Historicamente, nenhuma prática pedagógica prescinde de uma corpo teórico que lhe dá sustentação.</p>
-                    <span class="read-more">Ler artigo completo</span>
-                </a>
-            </article>
-            <article class="article-card">
-                <a href="https://sergioaraujo.onlyoffice.com/s/Chz4MwzfCSWBKtj" target="_blank">
-                    <div class="article-meta"><span class="category-tag">Filosofia</span></div>
-                    <h2 class="article-title">Liberdade e responsabilidade</h2>
-                    <p class="article-excerpt">A questão da liberdade é uma das mais importantes da filosofia. Inúmeros sistemas e filósofos arrolaram esse tema eminentemente humano.</p>
-                    <span class="read-more">Ler artigo completo</span>
-                </a>
-            </article>
-            <article class="article-card">
-                <a href="https://sergioaraujo.onlyoffice.com/s/tgVNG-Rg7FGkrZw" target="_blank">
-                    <div class="article-meta"><span class="category-tag">Reflexão</span></div>
-                    <h2 class="article-title">O olhar de Anísio</h2>
-                    <p class="article-excerpt">Acho que já tive a oportunidade de comentar sobre a emoção que senti ao contemplar uma fotografia de Anísio Teixeira na Faculdade de Educação da UFBA.</p>
-                    <span class="read-more">Ler artigo completo</span>
-                </a>
-            </article>
-            
-            <footer class="site-footer">
-                <p class="license-text">
-                    © 2025 Sérgio Araújo.<br>
-                    Esta obra está licenciada sob a licença <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="license noopener noreferrer">Creative Commons Atribuição-NãoComercial 4.0 Internacional</a>.
-                </p>
-            </footer>
-        </main>
-    </div>
+<article class="article-card">
+<a href="https://sergioaraujo.onlyoffice.com/s/TGBGpp8DKD69KMt" target="_blank">
+<div class="article-meta">
+<span class="category-tag">Pedagogia</span>
+</div>
+<h2 class="article-title">Comunidade de aprendizagem</h2>
+<p class="article-excerpt">As primeiras manifestações daquilo que hoje chamamos de ensino e aprendizagem vieram das rodas em torno das fogueiras na pré-história.</p>
+<span class="read-more">Ler artigo completo</span>
+</a>
+</article>
 
+<article class="article-card">
+<a href="https://sergioaraujo.onlyoffice.com/s/H_-jzVfXmHHTW54" target="_blank">
+<div class="article-meta">
+<span class="category-tag">Filosofia</span>
+</div>
+<h2 class="article-title">Rascunhos sobre vivência, consciência e pensamento crítico</h2>
+<p class="article-excerpt">A ausência do pensamento crítico, de um modo geral, e na prática educativa, caracteriza-se pela falta de um dar-se conta.</p>
+<span class="read-more">Ler artigo completo</span>
+</a>
+</article>
+
+<article class="article-card">
+<a href="https://sergioaraujo.onlyoffice.com/s/4KvzPy4_W9wvNd_" target="_blank">
+<div class="article-meta">
+<span class="category-tag">Pedagogia</span>
+</div>
+<h2 class="article-title">Quais os fundamentos da sua práxis em educação?</h2>
+<p class="article-excerpt">Historicamente, nenhuma prática pedagógica prescinde de uma corpo teórico que lhe dá sustentação.</p>
+<span class="read-more">Ler artigo completo</span>
+</a>
+</article>
+
+<article class="article-card">
+<a href="https://sergioaraujo.onlyoffice.com/s/Chz4MwzfCSWBKtj" target="_blank">
+<div class="article-meta">
+<span class="category-tag">Filosofia</span>
+</div>
+<h2 class="article-title">Liberdade e responsabilidade</h2>
+<p class="article-excerpt">A questão da liberdade é uma das mais importantes da filosofia. Inúmeros sistemas e filósofos arrolaram esse tema eminentemente humano.</p>
+<span class="read-more">Ler artigo completo</span>
+</a>
+</article>
+
+<article class="article-card">
+<a href="https://sergioaraujo.onlyoffice.com/s/tgVNG-Rg7FGkrZw" target="_blank">
+<div class="article-meta">
+<span class="category-tag">Reflexão</span>
+</div>
+<h2 class="article-title">O olhar de Anísio</h2>
+<p class="article-excerpt">Acho que já tive a oportunidade de comentar sobre a emoção que senti ao contemplar uma fotografia de Anísio Teixeira na Faculdade de Educação da UFBA.</p>
+<span class="read-more">Ler artigo completo</span>
+</a>
+</article>
+
+<footer class="site-footer">
+<p class="license-text">© 2025 Sérgio Araújo.<br>Esta obra está licenciada sob a licença <a href="http://creativecommons.org/licenses/by-nc/4.0/" target="_blank" rel="license noopener noreferrer">Creative Commons Atribuição-NãoComercial 4.0 Internacional</a>.</p>
+</footer>
+</main>
+</div>
 </body>
 </html>
